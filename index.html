@@ -1,40 +1,106 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Laboratorio de Software — Cronograma 2026</title>
-  <link rel="stylesheet" href="./styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cronograma Académico 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar__inner">
-      <div>
-        <h1>Laboratorio de Software</h1>
-        <p class="subtitle">Cronograma 2026 — Plan de clases</p>
-      </div>
+  <header class="hero">
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+      <span class="badge">Planificación académica · <span id="anioActual"></span></span>
+      <h1>Cronograma Laboratorio de Software</h1>
+      <p>
+        Recorrido formativo de la asignatura: fundamentos, calidad,
+        patrones GoF, arquitectura, eventos, microservicios y consolidación.
+      </p>
 
-      <div class="tools">
-        <input id="q" class="search" type="search" placeholder="Filtrar por tema, módulo o semana…" />
-        <button id="reload" class="btn" type="button" title="Volver a cargar base.json">Recargar</button>
+      <div class="hero__stats" id="stats"></div>
+
+      <div class="hero__actions">
+        <a href="#cronograma" class="btn btn--primary">Ver cronograma</a>
+        <button id="toggleView" class="btn btn--ghost" type="button">Cambiar vista</button>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="info" id="info">
-      <p>
-        <code>Cursada - Comisión 2026</code>.
-      </p>
+  <main>
+    <section class="section section--intro">
+      <div class="container intro-grid">
+        <article class="panel panel--accent">
+          <h2>Enfoque de la propuesta</h2>
+          <p>
+            El diseño prioriza claridad pedagógica, lectura cómoda y una estética académica moderna.
+            Para mantener la página limpia, se muestran con mayor protagonismo las columnas que aportan
+            más valor didáctico: semana, fecha, módulo, tema, patrón, arquitectura, objetivo y actividades.
+          </p>
+        </article>
+        <article class="panel">
+          <h2>Recorrido formativo</h2>
+          <ul class="legend" id="legend"></ul>
+        </article>
+      </div>
     </section>
 
-    <section class="grid" id="grid" aria-live="polite"></section>
+    <section class="section" id="cronograma">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <span class="section__eyebrow">Vista interactiva</span>
+            <h2>Cronograma semanal</h2>
+          </div>
+          <div class="filters">
+            <label class="search">
+              <span>Buscar</span>
+              <input type="search" id="searchInput" placeholder="Módulo, tema, patrón, arquitectura..." />
+            </label>
+          </div>
+        </div>
 
-    <section class="footer">
-      <small>Docente: <code>Alvarez Leandro</code>.</small>
+        <div class="view-switch">
+          <button class="tab is-active" data-view="cards">Tarjetas</button>
+          <button class="tab" data-view="table">Tabla</button>
+        </div>
+
+        <div id="cardsView" class="cards-grid"></div>
+
+        <div id="tableView" class="table-wrap hidden">
+          <table>
+            <thead>
+              <tr>
+                <th>Semana</th>
+                <th>Fecha</th>
+                <th>Módulo</th>
+                <th>Tema</th>
+                <th>Patrón(es)</th>
+                <th>Arquitectura</th>
+                <th>Objetivo</th>
+                <th>Tipo</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="./app.js"></script>
+  <footer class="footer">
+    <div class="container footer__content">
+      <p>Página web académica · Laboratorio de Software</p>
+      <p>Prof. Alvarez Leandro.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    document.getElementById("anioActual").textContent = new Date().getFullYear();
+  </script>  
 </body>
 </html>
