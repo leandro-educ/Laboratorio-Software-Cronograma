@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Landing pedagógica del tema Ciclo de Vida del Desarrollo de Software para Laboratorio de Software." />
+  <title>Ciclo de Vida del Desarrollo de Software · Laboratorio de Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .hero-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;margin-top:1.1rem}
+    .hero-kpis .stat-card strong{font-size:1.15rem}
+    .section-anchor{scroll-margin-top:110px}
+    .stage-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem}
+    .stage-card{padding:1rem;border-radius:22px;border:1px solid var(--line);background:var(--card);position:relative;overflow:hidden}
+    .stage-card::after{content:"";position:absolute;inset:auto -15% -40% auto;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle, rgba(83,183,255,.17), transparent 70%)}
+    .stage-card .icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;font-weight:800;background:rgba(83,183,255,.12);border:1px solid var(--line-strong);color:var(--title);margin-bottom:.8rem}
+    .stage-card.design .icon{background:rgba(255,154,60,.14)}
+    .stage-card.qa .icon{background:rgba(17,198,140,.14)}
+    .flow-line{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.85rem;margin-top:1rem}
+    .flow-chip{padding:.7rem .8rem;border-radius:999px;border:1px solid var(--line);text-align:center;background:rgba(255,255,255,.04);font-weight:700;color:var(--title)}
+    .quote-row{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem;align-items:stretch}
+    .problem-points{display:grid;gap:.8rem}
+    .phase-accordion details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem}
+    .phase-accordion details+details{margin-top:.8rem}
+    .phase-accordion summary{cursor:pointer;font-weight:800;color:var(--title)}
+    .phase-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+    .phase-meta .mini-summary{padding:1rem;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+    .visual-card img{width:100%;border-radius:20px;display:block}
+    .model-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+    .model-card{padding:1.1rem;border-radius:22px;border:1px solid var(--line);background:var(--card)}
+    .model-card .badge{display:inline-flex;padding:.45rem .7rem;border-radius:999px;margin-bottom:.75rem;font-size:.78rem;font-weight:700;border:1px solid var(--line)}
+    .badge.water{background:rgba(78,178,255,.12);color:#9fd7ff}
+    .badge.v{background:rgba(255,154,60,.13);color:#ffca94}
+    .badge.spiral{background:rgba(17,198,140,.13);color:#92efd1}
+    .badge.agile{background:rgba(123,141,255,.14);color:#c3ccff}
+    .comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .wide-card{padding:1.2rem;border-radius:22px;border:1px solid var(--line);background:var(--card)}
+    .callout-iso{border-color:rgba(83,183,255,.35);background:linear-gradient(135deg, rgba(83,183,255,.08), rgba(255,154,60,.06))}
+    .presenter-chip{display:inline-flex;gap:.4rem;align-items:center;padding:.42rem .72rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:.85rem;font-weight:700;color:var(--title)}
+    .teacher-note ul{margin:.7rem 0 0;padding-left:1rem}
+    .teacher-note li{margin-bottom:.35rem}
+    .bridge-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .bridge-card{padding:1rem;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+    .closing-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+    .small-muted{font-size:.92rem;color:var(--muted)}
+    .floating-note strong{display:block;margin-bottom:.2rem}
+    @media (max-width:1180px){.stage-grid,.flow-line,.model-grid,.bridge-grid,.hero-kpis,.comparison-grid,.quote-row,.closing-list,.phase-meta{grid-template-columns:1fr}}
+  </style>
+</head>
+<body class="teacher-mode">
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">LS</span>
+      <div>
+        <strong>Laboratorio de Software · Landing docente</strong>
+        <small>Ciclo de Vida del Desarrollo de Software <span class="separator">·</span> guía de apoyo visual</small>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <!-- <button class="btn ghost" data-action="toggle-teacher">Ocultar guion docente</button> -->
+      <button class="btn ghost" data-action="toggle-presenter">Modo presentación</button>
+      <button class="btn primary" data-action="toggle-theme">Tema claro</button>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="sidebar-card institutional-card">
+        <p class="eyebrow">Navegación</p>
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#contexto">Contexto del curso</a></li>
+          <li><a href="#crisis">De Code &amp; Fix a ingeniería</a></li>
+          <li><a href="#ciclo">Qué es el ciclo de vida</a></li>
+          <li><a href="#etapas">Etapas y lógica de trabajo</a></li>
+          <li><a href="#fases">Requerimientos a mantenimiento</a></li>
+          <li><a href="#modelos">Modelos de ciclo de vida</a></li>
+          <li><a href="#agil">Ágil y Scrum</a></li>
+          <li><a href="#cierre">Cierre docente</a></li>
+        </ul>
+      </section>
+
+      <section class="sidebar-card">
+        <p class="eyebrow">Progreso de lectura</p>
+        <div class="progress-bar"><span id="progressFill"></span></div>
+        <p id="progressText" class="small-muted">0% recorrido</p>
+      </section>
+
+      <section class="sidebar-card">
+        <p class="eyebrow">Idea fuerza</p>
+        <blockquote>
+          El ciclo de vida no es un adorno teórico: organiza el trabajo, reduce riesgos y vuelve visible por qué un proyecto profesional no se improvisa.
+        </blockquote>
+      </section>
+
+      <section class="sidebar-card">
+        <p class="eyebrow">Sugerencia de oralización</p>
+        <div class="mini-badges">
+          <span>Problema inicial</span>
+          <span>Marco conceptual</span>
+          <span>Etapas</span>
+          <span>Modelos</span>
+          <span>Aplicación al curso</span>
+        </div>
+      </section>
+    </aside>
+
+    <main class="content">
+      <section class="panel hero reveal section-anchor" id="inicio">
+        <div class="hero-copy">
+          <span class="tag">Laboratorio de Software · <span id="anio"></span></span>
+          <h1>Ciclo de Vida del <span class="accent">Desarrollo de Software</span></h1>
+          <p class="lead">
+            Una landing docente pensada para presentar el tema, sostener la explicación oral y dejar a los estudiantes una guía clara sobre por qué el software profesional se planifica, se diseña, se prueba y se mantiene por etapas.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#ciclo">Empezar recorrido</a>
+            <a class="btn ghost" href="#modelos">Ver modelos</a>
+            <span class="presenter-chip">Docente + estudiantes · misma experiencia visual del campus</span>
+          </div>
+
+          <div class="hero-kpis">
+            <article class="stat-card"><strong>ISO 12207</strong><span>marco de referencia del tema</span></article>
+            <article class="stat-card"><strong>6 etapas</strong><span>del requerimiento al mantenimiento</span></article>
+            <article class="stat-card"><strong>4 modelos</strong><span>cascada, V, espiral y ágil</span></article>
+          </div>
+
+        </div>
+
+        <div class="hero-media">
+          <figure class="image-frame visual-card">
+            <img src="../assets/hero-process.png" alt="Imagen conceptual del ciclo de vida del software" />
+            <figcaption>Planificar, modelar, construir, verificar y evolucionar.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="panel reveal section-anchor" id="contexto">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Contexto del curso y sentido del tema</h2>
+            <p>El ciclo de vida se presenta dentro de Laboratorio de Software como una herramienta para pensar proyectos con método, calidad y trabajo colaborativo.</p>
+          </div>
+        </div>
+
+        <div class="quote-row">
+          <article class="card quote-panel">
+            <p class="quote-big">No alcanza con programar. En laboratorio buscamos comprender cómo se construye software con criterio profesional.</p>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Fechas importantes</p>
+            <div class="timeline">
+              <div class="timeline-item"><strong>Primer examen</strong><span>22 de mayo de 2025</span></div>
+              <div class="timeline-item"><strong>Segundo examen</strong><span>19 de junio de 2025</span></div>
+              <div class="timeline-item"><strong>Recuperatorio</strong><span>26 de junio de 2025</span></div>
+            </div>
+            <p class="small-muted top-spaced">La cursada contempla un proyecto integrador y la nota final surge del promedio simple entre ambos parciales y el trabajo práctico integrador.</p>
+          </article>
+        </div>
+
+        <div class="bridge-grid top-spaced">
+          <article class="bridge-card"><strong>Java + POO</strong><p>Base de la mayor parte del recorrido técnico del curso.</p></article>
+          <article class="bridge-card"><strong>Git y trabajo en equipo</strong><p>Control de versiones como parte del proceso de desarrollo, no como agregado posterior.</p></article>
+          <article class="bridge-card"><strong>APIs, datos y patrones</strong><p>Todo lo que aparece después en la materia se entiende mejor si primero ordenamos el ciclo de trabajo.</p></article>
+        </div>
+
+      </section>
+
+      <section class="panel reveal section-anchor" id="crisis">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>De Code &amp; Fix a la ingeniería de software</h2>
+            <p>El punto de partida histórico es un desarrollo improvisado: programar, corregir y volver a improvisar. Funciona en pequeño; se vuelve crítico en proyectos medianos o grandes.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Modelo tradicional · 1960</p>
+            <h3>Code &amp; Fix</h3>
+            <ul class="check-list">
+              <li>Se programa lo que se necesita en el momento.</li>
+              <li>Si algo falla, se corrige sobre la marcha.</li>
+              <li>No hay supervisión formal ni etapas claras.</li>
+              <li>Escala mal cuando crece el sistema o intervienen varios actores.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Problema central</p>
+            <h3>¿Qué fue la crisis del software?</h3>
+            <div class="problem-points">
+              <div class="status-note">Costos crecientes</div>
+              <div class="status-note">Retrasos frecuentes</div>
+              <div class="status-note">Poca calidad y errores difíciles de rastrear</div>
+              <div class="status-note">Dificultad para mantener y evolucionar productos</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="teaching-strip compact-strip">
+          <article class="teaching-box key">
+            <h3>Respuesta disciplinar</h3>
+            <p>La ingeniería de software propone métodos y técnicas para desarrollar y mantener software de calidad, con mayores posibilidades de éxito.</p>
+          </article>
+          <article class="teaching-box ask">
+            <h3>Pregunta disparadora</h3>
+            <p>¿Qué cambia cuando dejamos de ver el software como “código” y empezamos a verlo como “proyecto”?</p>
+          </article>
+        </div>
+
+      </section>
+
+      <section class="panel reveal section-anchor" id="ciclo">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2>¿Qué es el ciclo de vida del software?</h2>
+            <p>Un marco de referencia que organiza actividades y tareas desde la definición del producto hasta la finalización de su uso.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card callout-iso">
+            <p class="eyebrow">Norma ISO 12207</p>
+            <h3>Definición operativa</h3>
+            <p>El ciclo de vida del software contiene las actividades y tareas involucradas en el desarrollo, la explotación y el mantenimiento de un producto software, abarcando desde su definición hasta la finalización de su uso.</p>
+          </article>
+          <article class="card">
+            <p class="eyebrow">¿Por qué es importante?</p>
+            <ul class="check-list">
+              <li>Organiza el trabajo del equipo.</li>
+              <li>Asegura calidad y trazabilidad.</li>
+              <li>Reduce riesgos y costos.</li>
+              <li>Mejora la gestión del tiempo y los recursos.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="flow-line">
+          <div class="flow-chip">Requerimientos</div>
+          <div class="flow-chip">Diseño</div>
+          <div class="flow-chip">Desarrollo</div>
+          <div class="flow-chip">Pruebas</div>
+          <div class="flow-chip">Implementación</div>
+          <div class="flow-chip">Mantenimiento</div>
+        </div>
+
+      </section>
+
+      <section class="panel reveal section-anchor" id="etapas">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Etapas del ciclo de vida</h2>
+            <p>Las etapas no son compartimentos vacíos: cada una toma decisiones diferentes y genera información que impacta en las siguientes.</p>
+          </div>
+        </div>
+
+        <div class="stage-grid">
+          <article class="stage-card">
+            <div class="icon">R</div>
+            <h3>Requerimientos</h3>
+            <p>Entender qué necesita el cliente y qué problema se desea resolver.</p>
+          </article>
+          <article class="stage-card">
+            <div class="icon">A</div>
+            <h3>Análisis</h3>
+            <p>Traducir necesidades a lógica de negocio, riesgos y alcance.</p>
+          </article>
+          <article class="stage-card design">
+            <div class="icon">D</div>
+            <h3>Diseño</h3>
+            <p>Elegir arquitectura, tecnologías, UI y estructura técnica.</p>
+          </article>
+          <article class="stage-card design">
+            <div class="icon">&lt;/&gt;</div>
+            <h3>Desarrollo</h3>
+            <p>Codificar con estándares, documentación y control de versiones.</p>
+          </article>
+          <article class="stage-card qa">
+            <div class="icon">✓</div>
+            <h3>Pruebas</h3>
+            <p>Verificar calidad antes del lanzamiento: unitarias, integración y usuario.</p>
+          </article>
+          <article class="stage-card qa">
+            <div class="icon">∞</div>
+            <h3>Implementación + mantenimiento</h3>
+            <p>Lanzar, monitorear, corregir y evolucionar el producto.</p>
+          </article>
+        </div>
+
+        <div class="teaching-strip">
+          <article class="teaching-box key"><h3>Secuencia</h3><p>La idea no es recitar nombres, sino entender qué decisiones se toman en cada etapa.</p></article>
+          <article class="teaching-box ask"><h3>Riesgo docente útil</h3><p>Confundir análisis con diseño. Análisis piensa el problema; diseño piensa la solución técnica.</p></article>
+          <article class="teaching-box caution"><h3>Puente con el curso</h3><p>Lo que en laboratorio hacemos con Java, testing, patrones y Spring puede ubicarse dentro de estas etapas.</p></article>
+        </div>
+      </section>
+
+      <section class="panel reveal section-anchor" id="fases">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2>De requerimientos a mantenimiento</h2>
+            <p>Desglose conceptual de cada fase para acompañar la explicación oral y marcar qué preguntas resuelve cada una.</p>
+          </div>
+        </div>
+
+        <div class="phase-accordion">
+          <details open>
+            <summary>Requerimientos y análisis</summary>
+            <div class="detail-body">
+              <p><strong>Preguntas guía:</strong> ¿Qué necesita el cliente? ¿Qué problema específico se busca resolver? ¿Qué debe hacer el sistema?</p>
+              <div class="phase-meta">
+                <div class="mini-summary"><h3>Se define</h3><p>Objetivo del software, requisitos funcionales y no funcionales, interfaz esperada, plazos, presupuesto y mantenimiento acordado.</p></div>
+                <div class="mini-summary"><h3>Se analiza</h3><p>Lógica de negocio, riesgos, dependencias y casos de uso.</p></div>
+                <div class="mini-summary"><h3>Entregables típicos</h3><p>Listado de requisitos, alcance, restricciones y primeras decisiones de negocio.</p></div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Diseño</summary>
+            <div class="detail-body">
+              <p><strong>Pregunta guía:</strong> ¿Cómo lo vamos a desarrollar?</p>
+              <div class="phase-meta">
+                <div class="mini-summary"><h3>Se define</h3><p>Arquitectura tecnológica, lenguajes, frameworks, base de datos, clases y objetos.</p></div>
+                <div class="mini-summary"><h3>Se modela</h3><p>Diagramas de clases, secuencia, UI, integración con APIs, seguridad y escalabilidad.</p></div>
+                <div class="mini-summary"><h3>Resultado</h3><p>Un plan técnico más claro para pasar a la implementación.</p></div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Desarrollo</summary>
+            <div class="detail-body">
+              <p>Aquí aparece el código, pero no como acto aislado. Se implementa siguiendo estándares, buenas prácticas, documentación y control de versiones.</p>
+              <pre><code>// Idea docente breve
+// Construir no es solo programar.
+// También implica registrar, versionar y sostener coherencia.</code></pre>
+            </div>
+          </details>
+
+          <details>
+            <summary>Pruebas, implementación y mantenimiento</summary>
+            <div class="detail-body">
+              <div class="phase-meta">
+                <div class="mini-summary"><h3>Pruebas</h3><p>Unitarias, de integración y de usuario para detectar errores antes del lanzamiento.</p></div>
+                <div class="mini-summary"><h3>Implementación</h3><p>Despliegue en producción y monitoreo de estabilidad y desempeño.</p></div>
+                <div class="mini-summary"><h3>Mantenimiento</h3><p>Correcciones, mejoras, nuevas funciones, backups y soporte técnico.</p></div>
+              </div>
+            </div>
+          </details>
+        </div>
+
+      </section>
+
+      <section class="panel reveal section-anchor" id="modelos">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <div>
+            <h2>Modelos de ciclo de vida del software</h2>
+            <p>Los modelos no cambian el objetivo general: cambian la forma de recorrer las etapas, el manejo del riesgo y la flexibilidad frente a cambios.</p>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <article class="model-card">
+            <span class="badge water">Modelo en cascada</span>
+            <h3>Lineal y estructurado</h3>
+            <p>Útil cuando los requisitos están bien definidos y cambian poco.</p>
+          </article>
+          <article class="model-card">
+            <span class="badge v">Modelo V</span>
+            <h3>Diseño + prueba asociada</h3>
+            <p>Relaciona cada etapa de construcción con una etapa de validación.</p>
+          </article>
+          <article class="model-card">
+            <span class="badge spiral">Modelo espiral</span>
+            <h3>Iterativo y con foco en riesgo</h3>
+            <p>Permite planificar, evaluar riesgos, desarrollar y volver a mejorar.</p>
+          </article>
+          <article class="model-card">
+            <span class="badge agile">Modelo ágil</span>
+            <h3>Iteraciones cortas</h3>
+            <p>Entrega continua, trabajo colaborativo y adaptación al cambio.</p>
+          </article>
+        </div>
+
+        <div class="comparison-grid top-spaced">
+          <article class="wide-card">
+            <p class="eyebrow">Representaciones tomadas del material</p>
+            <div class="grid two">
+              <figure class="image-frame visual-card"><img src="../assets/cascade-v.png" alt="Representación de un modelo secuencial con versiones" /><figcaption>Secuencia de etapas y avance por versiones.</figcaption></figure>
+              <figure class="image-frame visual-card"><img src="../assets/spiral.png" alt="Representación del modelo espiral" /><figcaption>Espiral: objetivos, riesgos, desarrollo y planificación.</figcaption></figure>
+            </div>
+          </article>
+          <article class="wide-card">
+            <h3>Qué conviene destacar oralmente</h3>
+            <ul class="check-list">
+              <li>No existe un único modelo “correcto” para todos los proyectos.</li>
+              <li>La elección depende del alcance, el riesgo, la claridad de requisitos y la necesidad de adaptación.</li>
+              <li>La diferencia entre modelos está en la sucesión de etapas y en cómo gestionan cambios y riesgo.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <div>
+            <h2>Cascada, V, incremental y espiral</h2>
+            <p>Comparar modelos ayuda a que los estudiantes no se queden solo con definiciones aisladas.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Modelo en cascada</p>
+            <h3>Avance por pasos sucesivos</h3>
+            <p>Se imagina como una escalera: cada paso se completa antes de pasar al siguiente.</p>
+            <ul class="check-list">
+              <li>Fuerte orden secuencial.</li>
+              <li>Más rígido frente a cambios.</li>
+              <li>Útil cuando el problema está bien definido.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Modelo V</p>
+            <h3>Construcción y validación acopladas</h3>
+            <p>Relaciona requerimientos, diseño y codificación con pruebas unitarias, de integración, sistema y aceptación.</p>
+            <figure class="image-frame visual-card top-spaced"><img src="../assets/lego-v.jpg" alt="Ilustración tipo V con bloques" /><figcaption>Apoyo visual simple para explicar la idea del modelo V.</figcaption></figure>
+          </article>
+        </div>
+
+        <div class="grid two top-spaced">
+          <article class="card">
+            <p class="eyebrow">Modelo incremental</p>
+            <h3>Agregar partes nuevas</h3>
+            <p>Se construye por incrementos: cada entrega suma funcionalidad al producto.</p>
+            <figure class="image-frame visual-card top-spaced"><img src="../assets/incremental.png" alt="Representación incremental" /><figcaption>Cada incremento completa etapas y agrega una nueva versión.</figcaption></figure>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Modelo espiral</p>
+            <h3>Iterar con foco en riesgo</h3>
+            <p>Se vuelve sobre el producto mejorando y refinando a medida que se evalúan riesgos.</p>
+            <ul class="check-list">
+              <li>Determinar objetivos.</li>
+              <li>Evaluar riesgos.</li>
+              <li>Desarrollar y probar.</li>
+              <li>Planificar la siguiente vuelta.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal section-anchor" id="agil">
+        <div class="section-heading">
+          <span class="section-number">08</span>
+          <div>
+            <h2>Modelo ágil y Scrum</h2>
+            <p>Ágil propone construir en partes pequeñas, probar rápido, escuchar retroalimentación y ajustar continuamente.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Modelo ágil</p>
+            <h3>Entrega iterativa e incremental</h3>
+            <p>La metodología ágil es un enfoque de gestión y desarrollo basado en iteraciones cortas, colaboración continua y adaptabilidad al cambio.</p>
+            <figure class="image-frame visual-card top-spaced"><img src="../assets/agile-wheel.jpg" alt="Metodologías ágiles" /><figcaption>El modelo ágil pone el foco en colaboración, revisión y capacidad de adaptación.</figcaption></figure>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Scrum</p>
+            <h3>Organización rápida y flexible del trabajo</h3>
+            <ul class="check-list">
+              <li>Sprints cortos.</li>
+              <li>Planificación, ejecución, revisión y retrospectiva.</li>
+              <li>Trabajo visible y coordinación del equipo.</li>
+            </ul>
+            <figure class="image-frame visual-card top-spaced"><img src="../assets/scrum-board.png" alt="Tablero Scrum" /><figcaption>Visual útil para introducir backlog, trabajo en curso y seguimiento.</figcaption></figure>
+          </article>
+        </div>
+
+        <article class="wide-card top-spaced">
+          <h3>Comparación rápida</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>Incremental</th>
+                  <th>Espiral</th>
+                  <th>Ágil</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cómo se trabaja</td>
+                  <td>Se agregan partes nuevas completas.</td>
+                  <td>Se mejora y perfecciona lo mismo varias veces.</td>
+                  <td>Se hacen partes pequeñas rápido y con opinión del equipo.</td>
+                </tr>
+                <tr>
+                  <td>Cambio de planes</td>
+                  <td>Más difícil sobre lo ya hecho.</td>
+                  <td>Permite mejoras, pero sigue un marco de planificación.</td>
+                  <td>Admite cambios frecuentes sin romper la lógica de trabajo.</td>
+                </tr>
+                <tr>
+                  <td>Imagen mental</td>
+                  <td>Agregar más partes nuevas.</td>
+                  <td>Mejorar lo que ya existe.</td>
+                  <td>Construir, probar, ajustar y seguir.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="panel reveal section-anchor" id="cierre">
+        <div class="section-heading">
+          <span class="section-number">09</span>
+          <div>
+            <h2>Cierre docente</h2>
+            <p>Una síntesis para terminar la exposición y conectar el tema con el recorrido de la materia.</p>
+          </div>
+        </div>
+
+        <div class="closing-list">
+          <article class="card">
+            <h3>Ideas que conviene tener en cuenta</h3>
+            <ul class="check-list">
+              <li>El software profesional no se improvisa.</li>
+              <li>El ciclo de vida organiza tareas, decisiones y entregables.</li>
+              <li>Los modelos cambian la manera de recorrer las etapas, no la necesidad de pensar el proceso.</li>
+              <li>Lo que veremos en laboratorio puede ubicarse dentro de estas fases.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Puente con próximas clases</h3>
+            <ul class="check-list">
+              <li>Requerimientos → modelado de dominio.</li>
+              <li>Diseño → arquitectura, patrones y decisiones tecnológicas.</li>
+              <li>Desarrollo + pruebas → Java, testing, persistencia y calidad.</li>
+              <li>Implementación → APIs, servicios y mantenimiento evolutivo.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="final-banner top-spaced">
+          <p>Construir software no es avanzar a ciegas: es tomar decisiones ordenadas, justificadas y sostenibles.</p>
+          <span class="tag subtle">Prof.: Alvarez Leandro</span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Volver arriba">↑</button>
+  <script src="../script.js"></script>
+</body>
+</html>

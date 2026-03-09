@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Material ampliado de la Semana 1 sobre el ciclo de vida del desarrollo de software." />
+  <title>Semana 1 · Ciclo de Vida del Desarrollo de Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .material-page .content{width:100%;min-width:0;display:grid;gap:1.2rem}
+    .material-page .panel,.material-page .card,.material-page .media-card,.material-page .summary-card,.material-page .phase-card,.material-page .model-card,.material-page .concept-card{min-width:0;overflow:hidden}
+    .material-page .hero-note{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:1.5rem;align-items:center}
+    .material-page .hero-copy{min-width:0;padding-right:.25rem}
+    .material-page .hero-copy h1{font-size:clamp(2rem,4.2vw,3.8rem);line-height:1.05;max-width:12ch;text-wrap:balance;margin-bottom:.95rem;word-break:normal;overflow-wrap:anywhere}
+    .material-page .hero-copy .lead{max-width:62ch;margin-bottom:0;text-wrap:pretty}
+    .material-page .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.15rem 0 1.1rem}
+    .material-page .hero-actions .btn{min-width:180px}
+    .material-page .hero-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin-top:1rem}
+    .material-page .hero-kpis article{padding:1rem;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.04);min-width:0}
+    .material-page .hero-kpis strong{display:block;font-size:1.04rem;margin-bottom:.25rem;color:var(--title)}
+    .material-page .hero-kpis span{display:block;color:var(--muted);font-size:.93rem;line-height:1.45;overflow-wrap:anywhere}
+    .material-page .hero-visual{min-width:0;width:100%}
+    .material-page .hero-visual .image-frame{padding:.9rem;margin:0}
+    .material-page .hero-visual img{width:100%;max-height:520px;object-fit:cover;object-position:center;border-radius:18px}
+    .material-page .section-anchor{scroll-margin-top:100px}
+    .material-page .concept-grid,.material-page .phase-grid,.material-page .model-grid,.material-page .summary-grid,.material-page .visual-grid{display:grid;gap:1rem}
+    .material-page .concept-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .material-page .phase-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .material-page .model-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .material-page .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .material-page .visual-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+    .material-page .timeline-line{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.7rem;margin-top:1rem}
+    .material-page .timeline-line span{padding:.8rem .65rem;text-align:center;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-weight:700;color:var(--title);font-size:.9rem;overflow-wrap:anywhere}
+    .material-page .phase-number{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(83,183,255,.14);border:1px solid var(--line-strong);color:var(--title);font-weight:800;margin-bottom:.7rem}
+    .material-page .model-badge{display:inline-flex;padding:.42rem .7rem;border-radius:999px;border:1px solid var(--line);margin-bottom:.7rem;font-size:.8rem;font-weight:700}
+    .material-page .model-badge.cascada{background:rgba(83,183,255,.12)}
+    .material-page .model-badge.v{background:rgba(255,154,60,.12)}
+    .material-page .model-badge.espiral{background:rgba(17,198,140,.12)}
+    .material-page .model-badge.agil{background:rgba(123,141,255,.14)}
+    .material-page .table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:18px}
+    .material-page table{min-width:720px;width:100%}
+    .material-page td,.material-page th{white-space:normal;overflow-wrap:anywhere;vertical-align:top}
+    @media (max-width:1180px){
+      .material-page .hero-note{grid-template-columns:1fr}
+      .material-page .hero-copy h1{max-width:100%}
+      .material-page .hero-kpis,.material-page .concept-grid,.material-page .phase-grid,.material-page .model-grid,.material-page .summary-grid,.material-page .visual-grid,.material-page .timeline-line{grid-template-columns:1fr}
+      .material-page .hero-visual img{max-height:420px}
+    }
+    @media (max-width:760px){
+      .material-page .layout{grid-template-columns:1fr;padding:1rem}
+      .material-page .sidebar{position:static;order:2}
+      .material-page .content{order:1}
+      .material-page .topbar{flex-direction:column;align-items:stretch;gap:.9rem}
+      .material-page .top-actions{width:100%;display:grid;grid-template-columns:1fr}
+      .material-page .top-actions .btn{width:100%}
+      .material-page .panel{padding:1rem}
+      .material-page .hero-copy h1{font-size:clamp(1.7rem,7vw,2.5rem);line-height:1.1}
+      .material-page .lead{font-size:.98rem;line-height:1.65}
+      .material-page .hero-actions{display:grid;grid-template-columns:1fr}
+      .material-page .hero-actions .btn{min-width:0;width:100%}
+      .material-page .hero-kpis article,.material-page .concept-card,.material-page .phase-card,.material-page .model-card,.material-page .summary-card,.material-page .media-card{padding:.95rem}
+      .material-page .section-heading{flex-direction:column;gap:.75rem}
+      .material-page .section-number{width:50px;height:50px;min-width:50px}
+      .material-page .timeline-line span{text-align:left;border-radius:16px}
+      .material-page .image-frame{padding:.75rem}
+      .material-page .hero-visual img{max-height:280px}
+      .material-page .table-wrap{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+      .material-page table{min-width:620px;font-size:.92rem}
+    }
+  </style>
+</head>
+<body class="material-page">
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">LS</span>
+      <div>
+        <strong>Laboratorio de Software</strong>
+        <small>Semana 1 <span class="separator">·</span> Ciclo de Vida del Desarrollo de Software</small>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <a class="btn ghost" href="semana01.html">← Volver a Semana 1</a>
+      <button class="btn ghost" data-action="toggle-presenter">Modo presentación</button>
+      <button class="btn primary" data-action="toggle-theme">Tema claro</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <section class="sidebar-card institutional-card">
+        <p class="eyebrow">Material de clase</p>
+        <h3>Semana 1</h3>
+        <p>Una visión amplia del proceso de construcción de software: desde la necesidad inicial hasta la evolución del producto.</p>
+        <div class="mini-badges">
+          <span>Fundamentos</span>
+          <span>SDLC</span>
+          <span>Modelos</span>
+        </div>
+      </section>
+
+      <section class="sidebar-card">
+        <p class="eyebrow">Recorrido</p>
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#crisis">Crisis del software</a></li>
+          <li><a href="#ciclo">Qué es el ciclo de vida</a></li>
+          <li><a href="#etapas">Etapas</a></li>
+          <li><a href="#modelos">Modelos</a></li>
+          <li><a href="#comparacion">Comparación</a></li>
+          <li><a href="#cierre">Cierre</a></li>
+        </ul>
+      </section>
+
+      <section class="sidebar-card progress-card">
+        <p class="eyebrow">Progreso</p>
+        <div class="progress-bar"><span id="progressFill"></span></div>
+        <small id="progressText">0% recorrido</small>
+      </section>
+    </aside>
+
+    <section class="content">
+      <section id="inicio" class="panel hero reveal section-anchor">
+        <div class="hero-note">
+          <div class="hero-copy">
+            <span class="tag">Semana 1 · <span id="anio"></span></span>
+            <h1>Ciclo de Vida del <span class="accent">Desarrollo de Software</span></h1>
+            <p class="lead">
+              El ciclo de vida del software es un marco de trabajo que permite organizar el desarrollo en etapas claras, con objetivos definidos y productos esperables en cada momento del proyecto.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#ciclo">Comenzar recorrido</a>
+              <a class="btn ghost" href="#modelos">Ver modelos</a>
+            </div>
+
+            <div class="hero-kpis">
+              <article>
+                <strong>ISO 12207</strong>
+                <span>Define el ciclo de vida como marco de referencia para el desarrollo, uso y mantenimiento del software.</span>
+              </article>
+              <article>
+                <strong>6 etapas</strong>
+                <span>Requerimientos, diseño, desarrollo, pruebas, implementación y mantenimiento.</span>
+              </article>
+              <article>
+                <strong>4 modelos clave</strong>
+                <span>Cascada, V, espiral y ágil.</span>
+              </article>
+              <article>
+                <strong>1 propósito</strong>
+                <span>Construir software con método, control de calidad y capacidad de evolución.</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <figure class="image-frame">
+              <img src="../assets/hero-process.png" alt="Esquema visual del ciclo de vida del software" />
+              <figcaption class="small-note">Del problema inicial al producto evolutivo.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="crisis" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>La crisis del software</h2>
+            <p>Antes de que el desarrollo se sistematizara, muchos proyectos se construían sin etapas claras. Ese enfoque produjo errores tardíos, costos altos y dificultades de mantenimiento.</p>
+          </div>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>Modelo Code &amp; Fix</h3>
+            <ul class="check-list">
+              <li>Se programa lo que se necesita en el momento.</li>
+              <li>Si algo falla, se corrige sobre la marcha.</li>
+              <li>No hay supervisión metodológica.</li>
+              <li>Escala mal en proyectos medianos o grandes.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Consecuencia</h3>
+            <p>La llamada crisis del software mostró que el desarrollo sin método genera productos difíciles de sostener y equipos sin trazabilidad clara del trabajo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="ciclo" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>¿Qué es el ciclo de vida del software?</h2>
+            <p>Es un marco de referencia que organiza las actividades y tareas relacionadas con el desarrollo, la explotación y el mantenimiento de un producto software.</p>
+          </div>
+        </div>
+        <div class="concept-grid">
+          <article class="concept-card">
+            <h3>Organización</h3>
+            <p>Permite dividir un proyecto en etapas y convertir cada etapa en acciones concretas.</p>
+          </article>
+          <article class="concept-card">
+            <h3>Calidad</h3>
+            <p>Favorece la trazabilidad, la validación del producto y el control del proceso.</p>
+          </article>
+          <article class="concept-card">
+            <h3>Gestión</h3>
+            <p>Reduce riesgos, mejora el uso del tiempo y ordena los recursos disponibles.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="etapas" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2>Etapas del ciclo de vida</h2>
+            <p>Cada etapa responde a una pregunta distinta: qué se necesita, cómo se construye, cómo se valida y cómo se sostiene en el tiempo.</p>
+          </div>
+        </div>
+        <div class="timeline-line">
+          <span>Requerimientos</span>
+          <span>Diseño</span>
+          <span>Desarrollo</span>
+          <span>Pruebas</span>
+          <span>Implementación</span>
+          <span>Mantenimiento</span>
+        </div>
+      </section>
+
+      <section id="modelos" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Modelos del ciclo de vida</h2>
+            <p>Los modelos cambian la manera en que se recorren las etapas y la forma de gestionar el cambio y el riesgo.</p>
+          </div>
+        </div>
+        <div class="model-grid">
+          <article class="model-card">
+            <span class="model-badge cascada">Cascada</span>
+            <h3>Secuencial</h3>
+            <p>Cada fase se completa antes de pasar a la siguiente.</p>
+          </article>
+          <article class="model-card">
+            <span class="model-badge v">Modelo V</span>
+            <h3>Construcción y validación</h3>
+            <p>Relaciona cada etapa de desarrollo con una etapa de prueba.</p>
+          </article>
+          <article class="model-card">
+            <span class="model-badge espiral">Espiral</span>
+            <h3>Iterativo con riesgos</h3>
+            <p>Permite revisar, evaluar riesgos y perfeccionar la solución por ciclos.</p>
+          </article>
+          <article class="model-card">
+            <span class="model-badge agil">Ágil</span>
+            <h3>Incremental y flexible</h3>
+            <p>Trabaja con iteraciones cortas y adaptación continua.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="comparacion" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2>Comparación rápida</h2>
+            <p>Una tabla simple permite visualizar cómo cambian los enfoques según el modelo elegido.</p>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Incremental</th>
+                <th>Espiral</th>
+                <th>Ágil</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Cómo se trabaja</td>
+                <td>Se agregan partes nuevas completas.</td>
+                <td>Se mejora y perfecciona lo mismo varias veces.</td>
+                <td>Se construyen partes pequeñas y se ajustan rápido.</td>
+              </tr>
+              <tr>
+                <td>Relación con el cambio</td>
+                <td>Modificar lo ya entregado puede ser costoso.</td>
+                <td>Admite mejoras por ciclos.</td>
+                <td>Asume el cambio como parte natural del proceso.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="cierre" class="panel reveal section-anchor">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <div>
+            <h2>Cierre conceptual</h2>
+            <p>Comprender el ciclo de vida del software permite ubicar cada actividad dentro de un proceso profesional más amplio.</p>
+          </div>
+        </div>
+        <div class="final-banner">
+          <p>Desarrollar software de manera profesional es construir con método, validar con criterio y evolucionar con responsabilidad.</p>
+          <span class="tag subtle">Laboratorio de Software</span>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <button class="scroll-top" id="scrollTopBtn" aria-label="Volver arriba">↑</button>
+  <script src="../script.js"></script>
+</body>
+</html>
