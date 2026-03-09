@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Herramientas y configuración del entorno de trabajo para Laboratorio de Software." />
+  <title>Herramientas · Laboratorio de Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <div>
+        <strong>Herramientas · Laboratorio de Software</strong>
+        <small>Base operativa para modelar, probar e integrar soluciones.</small>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <a class="btn ghost" href="index.html">Campus</a>
+      <a class="btn ghost" href="paginas/semana01.html">Semana 1</a>
+      <button class="btn primary" data-action="toggle-theme">Tema claro</button>
+    </nav>
+  </header>
+
+  <main class="campus-main">
+    <section class="panel tool-hero reveal">
+      <div class="tool-copy">
+        <span class="tag">Base técnica de la materia</span>
+        <h1>Entorno de trabajo para <span class="accent">Laboratorio de Software</span></h1>
+        <p class="lead">
+          Antes de desarrollar soluciones profesionales, necesitamos un entorno ordenado y reproducible. Esta página reúne el conjunto mínimo de herramientas para cursar con fluidez: modelar, compilar, testear, ejecutar APIs y trabajar con mensajería.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#stack">Ver stack</a>
+          <a class="btn ghost" href="#pasos">Ver pasos</a>
+          <a class="btn secondary" href="index.html">Volver al campus</a>
+        </div>
+        <div class="course-chip-row">
+          <span>Java 21</span>
+          <span>Maven</span>
+          <span>JUnit</span>
+          <span>SQLite</span>
+          <span>Spring Boot</span>
+          <span>RabbitMQ</span>
+        </div>
+      </div>
+
+      <div class="tool-summary">
+        <article class="card mini-summary">
+          <h3>Lenguaje y runtime</h3>
+          <p>Java 21 como base del laboratorio.</p>
+        </article>
+        <article class="card mini-summary">
+          <h3>Build y dependencias</h3>
+          <p>Maven para compilar, testear y empaquetar.</p>
+        </article>
+        <article class="card mini-summary">
+          <h3>Arquitectura real</h3>
+          <p>Spring Boot, Docker y RabbitMQ en la segunda mitad del curso.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal" id="stack">
+      <div class="section-heading">
+        <span class="section-number">01</span>
+        <div>
+          <h2>Stack recomendado</h2>
+          <p>Un stack coherente evita fricción innecesaria y deja la energía del grupo en lo importante: diseñar y construir buen software.</p>
+        </div>
+      </div>
+
+      <div class="resource-grid">
+        <article class="card resource-card">
+          <p class="eyebrow">Editor</p>
+          <h3>Visual Studio Code o IntelliJ IDEA</h3>
+          <ul>
+            <li>Autocompletado y navegación por clases.</li>
+            <li>Integración con Git.</li>
+            <li>Terminal incorporada para flujo continuo.</li>
+          </ul>
+        </article>
+        <article class="card resource-card">
+          <p class="eyebrow">Calidad</p>
+          <h3>JUnit + JaCoCo</h3>
+          <ul>
+            <li>Tests unitarios y de regresión.</li>
+            <li>Cobertura como evidencia complementaria.</li>
+            <li>Trabajo incremental desde el inicio.</li>
+          </ul>
+        </article>
+        <article class="card resource-card">
+          <p class="eyebrow">Integración</p>
+          <h3>Docker + Postman + RabbitMQ</h3>
+          <ul>
+            <li>Contenedores para servicios auxiliares.</li>
+            <li>Prueba manual de endpoints.</li>
+            <li>Mensajería distribuida y trazabilidad.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal" id="pasos">
+      <div class="section-heading">
+        <span class="section-number">02</span>
+        <div>
+          <h2>Configuración sugerida del entorno</h2>
+          <p>Una secuencia simple para preparar la notebook antes de las primeras prácticas.</p>
+        </div>
+      </div>
+
+      <div class="tool-steps">
+        <article class="card step-card">
+          <p class="eyebrow">Paso 1</p>
+          <h3>Instalar Java 21</h3>
+          <p>Verificar que el sistema reconozca correctamente el JDK.</p>
+          <pre><code>java -version
+javac -version</code></pre>
+        </article>
+
+        <article class="card step-card">
+          <p class="eyebrow">Paso 2</p>
+          <h3>Instalar Maven</h3>
+          <p>Será la base para compilar, ejecutar tests y organizar dependencias.</p>
+          <pre><code>mvn -version</code></pre>
+        </article>
+
+        <article class="card step-card">
+          <p class="eyebrow">Paso 3</p>
+          <h3>Configurar Git</h3>
+          <p>El laboratorio parte del trabajo versionado. Cada evidencia debería quedar registrada en repositorio.</p>
+          <pre><code>git --version
+git config --global user.name "Tu Nombre"
+git config --global user.email "tu@email.com"</code></pre>
+        </article>
+
+        <article class="card step-card">
+          <p class="eyebrow">Paso 4</p>
+          <h3>Preparar herramientas complementarias</h3>
+          <p>DB Browser o SQLite, Docker Desktop, Postman y un navegador para RabbitMQ Management.</p>
+          <pre><code>docker --version</code></pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">03</span>
+        <div>
+          <h2>Estructura base de un proyecto Maven</h2>
+          <p>Una estructura mínima, clara y suficiente para comenzar con orden desde la primera semana.</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <article class="card tree-card">
+          <h3>Vista general</h3>
+          <pre class="tree-view"><code>laboratorio-software/
+├─ pom.xml
+├─ README.md
+├─ src/
+│  ├─ main/
+│  │  └─ java/
+│  └─ test/
+│     └─ java/
+└─ .gitignore</code></pre>
+        </article>
+
+        <article class="card">
+          <h3>¿Qué aporta cada parte?</h3>
+          <div class="timeline">
+            <div class="timeline-item"><strong>pom.xml</strong><span>Define dependencias, plugins y ciclo de build.</span></div>
+            <div class="timeline-item"><strong>src/main/java</strong><span>Contiene el código fuente productivo.</span></div>
+            <div class="timeline-item"><strong>src/test/java</strong><span>Aloja los tests automatizados.</span></div>
+            <div class="timeline-item"><strong>README.md</strong><span>Documenta ejecución, decisiones y pasos de reproducción.</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">04</span>
+        <div>
+          <h2>Comandos útiles durante la cursada</h2>
+          <p>Un pequeño repertorio operativo para no perder tiempo cuando la clase entra en ritmo de laboratorio.</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <article class="card code-card">
+          <div class="code-card-header">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <small>Maven</small>
+          </div>
+          <pre><code>mvn clean test
+mvn clean package
+mvn spring-boot:run</code></pre>
+        </article>
+        <article class="card code-card">
+          <div class="code-card-header">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <small>Docker + RabbitMQ</small>
+          </div>
+          <pre><code>docker compose up -d
+docker ps
+docker compose down</code></pre>
+        </article>
+      </div>
+
+      <div class="teaching-strip compact-strip">
+        <article class="teaching-box key">
+          <h3>Consejo de cursada</h3>
+          <p>Documentar cómo se ejecuta el proyecto y cómo se verifican los tests ahorra tiempo al docente, al equipo y al propio estudiante cuando vuelve a abrir su trabajo semanas después.</p>
+        </article>
+        <article class="teaching-box caution">
+          <h3>Error frecuente</h3>
+          <p>Esperar a la semana del parcial para ordenar el repositorio. En laboratorio, la organización técnica también forma parte del aprendizaje.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <button id="scrollTopBtn" class="scroll-top" aria-label="Volver arriba">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

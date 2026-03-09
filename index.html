@@ -3,104 +3,360 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cronograma Académico 2026</title>
+  <meta name="description" content="Campus visual de la materia Laboratorio de Software con recorrido por 16 semanas." />
+  <title>Campus · Laboratorio de Software</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__overlay"></div>
-    <div class="container hero__content">
-      <span class="badge">Planificación académica · <span id="anioActual"></span></span>
-      <h1>Cronograma Laboratorio de Software</h1>
-      <p>
-        Recorrido formativo de la asignatura: fundamentos, calidad,
-        patrones GoF, arquitectura, eventos, microservicios y consolidación.
-      </p>
+  <div class="bg-grid"></div>
 
-      <div class="hero__stats" id="stats"></div>
-
-      <div class="hero__actions">
-        <a href="#cronograma" class="btn btn--primary">Ver cronograma</a>
-        <button id="toggleView" class="btn btn--ghost" type="button">Cambiar vista</button>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <div>
+        <strong>Campus · Laboratorio de Software</strong>
+        <small>Prof.: Alvarez Leandro <span class="separator">·</span> Recorrido institucional de la materia.</small>
       </div>
     </div>
+    <nav class="top-actions">
+      <a class="btn ghost" href="paginas/semana01.html">Semana 1</a>
+      <a class="btn ghost" href="herramientas.html">Herramientas</a>
+      <button class="btn primary" data-action="toggle-theme">Tema claro</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="section section--intro">
-      <div class="container intro-grid">
-        <article class="panel panel--accent">
-          <h2>Enfoque de la propuesta</h2>
-          <p>
-            El diseño prioriza claridad pedagógica, lectura cómoda y una estética académica moderna.
-            Para mantener la página limpia, se muestran con mayor protagonismo las columnas que aportan
-            más valor didáctico: semana, fecha, módulo, tema, patrón, arquitectura, objetivo y actividades.
-          </p>
+  <main class="campus-main">
+    <section class="panel campus-hero reveal">
+      <div class="campus-copy">
+        <span class="tag">Campus <span id="anio"></span> · Ingeniería con criterio</span>
+        <h1>Laboratorio de <span class="accent">Software</span></h1>
+        <p class="lead">
+          Este campus organiza la cursada como un recorrido de 16 semanas, pensado para acompañar a los estudiantes en el diseño, construcción y validación de soluciones reales. El foco está en pasar del código suelto al software profesional: dominio, calidad, arquitectura, integración y comunicación técnica.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="paginas/semana01.html">Ingresar a Semana 1</a>
+          <a class="btn ghost" href="#semanas">Ver cronograma</a>
+          <a class="btn secondary" href="herramientas.html">Herramientas</a>
+        </div>
+
+        <div class="campus-stats">
+          <article class="stat-card">
+            <strong>16</strong>
+            <span>semanas de cursada</span>
+          </article>
+          <article class="stat-card">
+            <strong>15</strong>
+            <span>carpetas Drive enlazadas</span>
+          </article>
+          <article class="stat-card">
+            <strong>Java · Spring · RabbitMQ</strong>
+            <span>stack central de trabajo</span>
+          </article>
+          <article class="stat-card">
+            <strong>Material + práctica + entrega</strong>
+            <span>estructura fija por semana</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="campus-visual">
+        <div class="visual-shell">
+          <div class="visual-badge">Diseñar · probar · integrar</div>
+          <figure class="image-frame image-frame-campus">
+            <img src="laboratorio-software.png" alt="Portada visual de Laboratorio de Software" />
+          </figure>
+          <div class="floating-note note-one">Del modelo de dominio a la arquitectura real</div>
+          <div class="floating-note note-two">Patrones, pruebas, APIs, eventos y microservicios</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">01</span>
+        <div>
+          <h2>Presentación de la materia</h2>
+          <p>Un laboratorio para aprender a construir software con intención técnica, criterio profesional y evidencia de calidad.</p>
+        </div>
+      </div>
+
+      <div class="grid three">
+        <article class="card summary-card">
+          <p class="eyebrow">Objetivo general</p>
+          <h3>Construir software con fundamento</h3>
+          <p>La materia propone pasar del modelado básico a soluciones más completas, integrando dominio, persistencia, testing, arquitectura en capas y comunicación entre servicios.</p>
         </article>
-        <article class="panel">
-          <h2>Recorrido formativo</h2>
-          <ul class="legend" id="legend"></ul>
+
+        <article class="card summary-card">
+          <p class="eyebrow">Metodología</p>
+          <h3>Teoría aplicada a práctica</h3>
+          <p>Cada semana trabaja un concepto técnico acompañado por una producción concreta: modelado, implementación, pruebas, documentación y evidencia de ejecución.</p>
+        </article>
+
+        <article class="card summary-card">
+          <p class="eyebrow">Evaluación</p>
+          <h3>Integración progresiva</h3>
+          <p>Primer parcial en semana 8 y segundo parcial en semana 14. La cursada enfatiza trazabilidad, README reproducible, pruebas y defensa breve de decisiones de diseño.</p>
+        </article>
+      </div>
+
+      <div class="teaching-strip compact-strip">
+        <article class="teaching-box key">
+          <h3>Idea central</h3>
+          <p>Laboratorio de Software no se reduce a “hacer que funcione”. La meta es construir soluciones mantenibles, justificadas y con una estructura que pueda evolucionar.</p>
+        </article>
+        <article class="teaching-box ask">
+          <h3>Recorrido del cuatrimestre</h3>
+          <p>El curso avanza desde dominio y calidad hacia arquitectura real, eventos, microservicios y hardening. Cada etapa prepara la siguiente.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="cronograma">
-      <div class="container">
-        <div class="section__head">
-          <div>
-            <span class="section__eyebrow">Vista interactiva</span>
-            <h2>Cronograma semanal</h2>
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">02</span>
+        <div>
+          <h2>Cómo usar este campus</h2>
+          <p>Cada semana ahora está organizada con una lógica fija para que el estudiante sepa qué mirar primero y qué debe producir.</p>
+        </div>
+      </div>
+
+      <div class="grid three">
+        <article class="card summary-card">
+          <p class="eyebrow">Material</p>
+          <h3>Marco conceptual</h3>
+          <p>Resume tema, objetivo, patrón o enfoque técnico, capas trabajadas, arquitectura real y pregunta guía de la semana.</p>
+        </article>
+        <article class="card summary-card">
+          <p class="eyebrow">Práctica</p>
+          <h3>Trabajo guiado</h3>
+          <p>Presenta actividades esperadas, secuencia de resolución y foco de laboratorio para transformar teoría en producción concreta.</p>
+        </article>
+        <article class="card summary-card">
+          <p class="eyebrow">Entrega</p>
+          <h3>Evidencia verificable</h3>
+          <p>Explicita qué conviene dejar listo y, desde la semana 1 a la 15, ofrece acceso directo a la carpeta Drive del repositorio semanal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">03</span>
+        <div>
+          <h2>Mapa de progresión del curso</h2>
+          <p>Una vista compacta del recorrido pedagógico para entender cómo se encadenan las decisiones técnicas de la materia.</p>
+        </div>
+      </div>
+      <div class="roadmap-grid">
+        <article class="roadmap-card"><strong>Semanas 1–2</strong><h3>Fundamentos del laboratorio</h3><p>Dominio, modelado, responsabilidades claras y pensamiento orientado a objetos.</p></article>
+        <article class="roadmap-card"><strong>Semanas 3–4</strong><h3>Calidad y diseño mantenible</h3><p>Testing profesional, TDD, SQLite, SOLID, Strategy y Template Method.</p></article>
+        <article class="roadmap-card"><strong>Semanas 5–7</strong><h3>Patrones estructurales</h3><p>Composite, Decorator e integración progresiva con evidencia de calidad.</p></article>
+        <article class="roadmap-card"><strong>Semanas 8 y 14</strong><h3>Hitos evaluativos</h3><p>Dos parciales con defensa, README reproducible y trazabilidad técnica.</p></article>
+        <article class="roadmap-card"><strong>Semanas 9–13</strong><h3>Arquitectura real</h3><p>Spring Boot, capas, eventos internos, microservicios y RabbitMQ.</p></article>
+        <article class="roadmap-card"><strong>Semanas 15–16</strong><h3>Consolidación y cierre</h3><p>Hardening, trade-offs arquitectónicos y visión profesional del desarrollo.</p></article>
+      </div>
+    </section>
+
+    <section class="panel campus-section reveal" id="semanas">
+      <div class="section-heading">
+        <span class="section-number">04</span>
+        <div>
+          <h2>Ruta académica de 16 semanas</h2>
+          <p>Cada tarjeta conduce a la semana correspondiente. Desde la semana 1 a la 15, también hay acceso directo a la carpeta Drive del repositorio semanal.</p>
+        </div>
+      </div>
+
+      <div class="weeks-grid">
+        
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">01</span>
+            <span class="status-pill available">Disponible</span>
           </div>
-          <div class="filters">
-            <label class="search">
-              <span>Buscar</span>
-              <input type="search" id="searchInput" placeholder="Módulo, tema, patrón, arquitectura..." />
-            </label>
+          <p class="eyebrow">12-mar-26 · M1 - Fundamentos</p>
+          <h3>Presentación. ¿Qué significa diseñar software profesional? Modelado simple en Java puro.</h3>
+          <p>Comprender qué es el dominio</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana01.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1aqY5iG8VLxrqyAC6qP9o02UeTVTrkO7Y?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">02</span>
+            <span class="status-pill available">Disponible</span>
           </div>
-        </div>
+          <p class="eyebrow">19-mar-26 · M1 - Fundamentos</p>
+          <h3>Construcción del Modelo de Dominio: clases, relaciones y responsabilidades claras.</h3>
+          <p>Pensamiento orientado a objetos</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana02.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/12s_XpRArnhbkE38x0NjEmH8DSbn9fZ7d?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">03</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">26-mar-26 · M2 - Calidad</p>
+          <h3>Testing profesional (JUnit, TDD) y persistencia básica con SQLite.</h3>
+          <p>Calidad desde el inicio</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana03.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/137SxYqybp_vrM8kNNXKfQGpbVdW1KSSv?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">04</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">02-abr-26 · M2 - Calidad</p>
+          <h3>Aplicación práctica de SOLID sobre el dominio. Refactor guiado.</h3>
+          <p>Diseño mantenible</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana04.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1mnguiLzDrQGLUxKw37A1w4CgVyrk2wjs?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">05</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">09-abr-26 · M3 - Patrones Estructurales</p>
+          <h3>Composite: estructuras jerárquicas y recursividad en objetos.</h3>
+          <p>Modelado complejo</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana05.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1J1tcVh4tM_Mb7tKnVcOQO13SyRkhaSWK?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">06</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">16-abr-26 · M3 - Patrones Estructurales</p>
+          <h3>Decorator: extensión dinámica del comportamiento sin modificar clases base.</h3>
+          <p>Diseño flexible</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana06.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1munGABavj_WSppKAZifySvE1MfbBDTM4?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">07</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">23-abr-26 · M3 - Integración</p>
+          <h3>Integración de patrones. Consolidación y mejora del modelo.</h3>
+          <p>Pensamiento sistémico</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana07.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1m-YeHWSW7jJKfErL6UmRa-276OybLQ0_?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-eval">
+          <div class="week-card-head">
+            <span class="week-index">08</span>
+            <span class="status-pill eval">Instancia evaluativa</span>
+          </div>
+          <p class="eyebrow">30-abr-26 · Hito 1</p>
+          <h3>Primer Parcial: diseño + código + tests.</h3>
+          <p>Integración de saberes</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana08.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1H1r8FoQFd9v46vaaKn2Q5vM3T3FI-Tju?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">09</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">07-may-26 · M4 - Arquitectura</p>
+          <h3>Introducción a arquitectura en capas. Exponer el dominio con Spring Boot.</h3>
+          <p>Separación de responsabilidades</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana09.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1IndGjhi85nOrpD7ZYZ2w88nEbEiKqgRl?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">10</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">14-may-26 · M4 - Arquitectura</p>
+          <h3>Patrones de comportamiento: Command y Observer aplicados.</h3>
+          <p>Desacoplamiento</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana10.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1QnzFwDcXoRF99ATZqVpVx0uhb6BkExrD?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">11</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">21-may-26 · M5 - Eventos</p>
+          <h3>Eventos internos y mensajería dentro del monolito.</h3>
+          <p>Diseño orientado a eventos</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana11.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1opLt49_qCaIO2lmICQ0Z_9fyoU-EQnqn?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">12</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">28-may-26 · M6 - Microservicios</p>
+          <h3>Separación en servicios independientes. Bounded Context.</h3>
+          <p>Escalabilidad</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana12.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1HN2B3mFP8N6_UQuFpBUhKtHBWqL8vELT?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">13</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">04-jun-26 · M6 - Microservicios</p>
+          <h3>RabbitMQ y comunicación entre servicios.</h3>
+          <p>Mensajería profesional</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana13.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/116DxO3MZ0H_WbJdChYryZShOW8TPOQxi?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-eval">
+          <div class="week-card-head">
+            <span class="week-index">14</span>
+            <span class="status-pill eval">Instancia evaluativa</span>
+          </div>
+          <p class="eyebrow">11-jun-26 · Hito 2</p>
+          <h3>Segundo Parcial: integración distribuida.</h3>
+          <p>Arquitectura real</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana14.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1BOIRa02RSTN3flfLvCUWUtrwx2fKxIRE?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-available">
+          <div class="week-card-head">
+            <span class="week-index">15</span>
+            <span class="status-pill available">Disponible</span>
+          </div>
+          <p class="eyebrow">18-jun-26 · M7 - Consolidación</p>
+          <h3>Repaso estratégico. Trade-offs arquitectónicos.</h3>
+          <p>Criterio profesional</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana15.html">Abrir semana</a><a class="btn ghost small" href="https://drive.google.com/drive/folders/1meijpnayyMpvYrhiOxMsy_SzmPuusqik?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a></div>
+        </article>
+        <article class="card week-card week-building">
+          <div class="week-card-head">
+            <span class="week-index">16</span>
+            <span class="status-pill building">Cierre</span>
+          </div>
+          <p class="eyebrow">25-jun-26 · Cierre</p>
+          <h3>Devoluciones finales y visión profesional del desarrollo de software.</h3>
+          <p>Cierre reflexivo</p>
+          <div class="card-actions"><a class="btn primary small" href="paginas/semana16.html">Abrir semana</a></div>
+        </article>
+      </div>
+    </section>
 
-        <div class="view-switch">
-          <button class="tab is-active" data-view="cards">Tarjetas</button>
-          <button class="tab" data-view="table">Tabla</button>
+    <section class="panel campus-section reveal">
+      <div class="section-heading">
+        <span class="section-number">05</span>
+        <div>
+          <h2>Cierre del campus</h2>
+          <p>El recorrido está pensado para que el estudiante avance con una lógica clara: comprender, practicar, evidenciar y consolidar.</p>
         </div>
-
-        <div id="cardsView" class="cards-grid"></div>
-
-        <div id="tableView" class="table-wrap hidden">
-          <table>
-            <thead>
-              <tr>
-                <th>Semana</th>
-                <th>Fecha</th>
-                <th>Módulo</th>
-                <th>Tema</th>
-                <th>Patrón(es)</th>
-                <th>Arquitectura</th>
-                <th>Objetivo</th>
-                <th>Tipo</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-          </table>
-        </div>
+      </div>
+      <div class="teaching-strip compact-strip">
+        <article class="teaching-box key">
+          <h3>Para el estudiante</h3>
+          <p>Usá cada semana como una hoja de ruta. Mirá primero el material, luego la práctica y finalmente revisá qué evidencia debería quedar cerrada.</p>
+        </article>
+        <article class="teaching-box caution">
+          <h3>Para el laboratorio</h3>
+          <p>La organización técnica también enseña. Un repo claro, una evidencia reproducible y una entrega justificable son parte del aprendizaje profesional.</p>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__content">
-      <p>Página web académica · Laboratorio de Software</p>
-      <p>Prof. Alvarez Leandro.</p>
-    </div>
-  </footer>
-
   <script src="script.js"></script>
-
-  <script>
-    document.getElementById("anioActual").textContent = new Date().getFullYear();
-  </script>  
 </body>
 </html>

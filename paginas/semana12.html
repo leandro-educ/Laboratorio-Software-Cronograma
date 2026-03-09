@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Semana 12 de la materia Laboratorio de Software." />
+  <title>Semana 12 · Laboratorio de Software</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">&lt;/&gt;</span>
+      <div>
+        <strong>Laboratorio de Software · Semana 12</strong>
+        <small>M6 - Microservicios <span class="separator">·</span> 28 de mayo de 2026</small>
+      </div>
+    </div>
+    <nav class="top-actions">
+      <a class="btn ghost" href="../index.html">Campus</a>
+      <a class="btn ghost" href="../herramientas.html">Herramientas</a>
+      <button class="btn primary" data-action="toggle-theme">Tema claro</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-card institutional-card">
+        <p class="eyebrow">Identidad de la semana</p>
+        <h3>Semana 12</h3>
+        <p>Separación en servicios independientes. Bounded Context.</p>
+        <div class="mini-badges">
+          <span>M6 - Microservicios</span><span>Teórico–Práctica</span>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <p class="eyebrow">Recorrido</p>
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#resumen">Resumen</a></li>
+          <li><a href="#material">Material</a></li>
+          <li><a href="#practica">Práctica</a></li>
+          <li><a href="#entrega">Entrega</a></li>
+          <li><a href="#cierre">Cierre</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card progress-card">
+        <p class="eyebrow">Progreso</p>
+        <div class="progress-bar"><span id="progressFill"></span></div>
+        <small id="progressText">0% recorrido</small>
+      </div>
+
+      <div class="sidebar-card repo-callout">
+        <p class="eyebrow">Repositorio semanal</p>
+        <h3>Carpeta de trabajo</h3>
+        <p>Accede a la carpeta Drive correspondiente para consultar materiales, subir evidencias o revisar archivos de referencia.</p>
+        <a class="btn secondary" href="https://drive.google.com/drive/folders/1HN2B3mFP8N6_UQuFpBUhKtHBWqL8vELT?usp=sharing" target="_blank" rel="noopener noreferrer">Abrir carpeta Drive</a>
+      </div>
+
+      <div class="sidebar-card quote-card-side">
+        <p class="eyebrow">Clave de laboratorio</p>
+        <blockquote>
+          Cada semana deja una evidencia: diseño, código, prueba, documentación o integración.
+        </blockquote>
+      </div>
+    </aside>
+
+    <section class="content">
+      <section id="inicio" class="panel hero reveal">
+        <div class="hero-copy">
+          <span class="tag">Campus <span id="anio"></span> · Semana 12</span>
+          <h2>Laboratorio de Software</h2>
+          <h1>Semana 12</h1>
+          <p class="lead">La semana se centra en <strong>Escalabilidad</strong> a partir del eje: Separación en servicios independientes. Bounded Context.</p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#material">Ver material</a>
+            <a class="btn ghost" href="#practica">Ir a la práctica</a>
+            <a class="btn secondary small" href="https://drive.google.com/drive/folders/1HN2B3mFP8N6_UQuFpBUhKtHBWqL8vELT?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a>
+          </div>
+
+          <div class="hero-pills">
+            <span>M6 - Microservicios</span>
+            <span>Disponible</span>
+            <span>28-may-26</span>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <figure class="image-frame">
+            <img src="../laboratorio-software.png" alt="Imagen de portada de Laboratorio de Software" />
+          </figure>
+        </div>
+      </section>
+
+      <section id="resumen" class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <h2>Resumen de la semana</h2>
+            <p>Información central para ubicar rápidamente el foco técnico, el objetivo y el tipo de producción esperada.</p>
+          </div>
+        </div>
+
+        <div class="week-summary">
+          <article class="card">
+            <p class="eyebrow">Tema central</p>
+            <h3>Separación en servicios independientes. Bounded Context.</h3>
+            <p>Escalabilidad</p>
+            <div class="meta-badges">
+              <span>28 de mayo de 2026</span>
+              <span>Teórico–Práctica</span>
+              <span>M6 - Microservicios</span>
+            </div>
+          </article>
+
+          <article class="card info-stack">
+            <div class="info-line">
+              <small class="eyebrow">Objetivo pedagógico</small>
+              <strong>Escalabilidad</strong>
+            </div>
+            <div class="info-line">
+              <small class="eyebrow">Capas trabajadas</small>
+              <strong>Servicios separados: API + App + Dominio + Infra (por servicio)</strong>
+            </div>
+            <div class="info-line">
+              <small class="eyebrow">Arquitectura real</small>
+              <strong>Microservicios (2 servicios)</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="material" class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <h2>Material conceptual</h2>
+            <p>El marco técnico de la semana: conceptos, patrón o enfoque dominante, capas y pregunta guía para orientar el estudio.</p>
+          </div>
+        </div>
+
+        <div class="grid three">
+          <article class="card fact-card">
+            <p class="eyebrow">Tema y objetivo</p>
+            <strong>Escalabilidad</strong>
+            <p>Separación en servicios independientes. Bounded Context.</p>
+          </article>
+          <article class="card fact-card">
+            <p class="eyebrow">GoF / diseño</p>
+            <strong>—</strong>
+            <p>Enfoque arquitectónico / DDD: —.</p>
+          </article>
+          <article class="card fact-card">
+            <p class="eyebrow">Capas / arquitectura</p>
+            <strong>Microservicios (2 servicios)</strong>
+            <p>Servicios separados: API + App + Dominio + Infra (por servicio)</p>
+          </article>
+        </div>
+
+        <div class="grid two top-spaced">
+          <article class="card">
+            <p class="eyebrow">Qué conviene revisar</p>
+            <ul class="check-list compact"><li>Tema eje: Separación en servicios independientes. Bounded Context.</li><li>Enfoque arquitectónico / DDD: —.</li><li>Capas trabajadas: Servicios separados: API + App + Dominio + Infra (por servicio).</li><li>Arquitectura real: Microservicios (2 servicios).</li></ul>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Pregunta guía</p>
+            <h3>Enfoque para mirar la semana</h3>
+            <p>¿Qué decisión técnica de esta semana ayuda mejor a lograr “escalabilidad” sin perder claridad en el diseño?</p>
+            <div class="teacher-note-like">
+              Pensá esta semana no solo desde “qué hay que programar”, sino desde “qué decisión técnica conviene sostener y por qué”.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="practica" class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <h2>Práctica guiada</h2>
+            <p>Actividades concretas del encuentro y una posible secuencia de trabajo para ordenar la producción de la semana.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Trabajo de la semana</p>
+            <h3>Actividades esperadas</h3>
+            <ul class="check-list"><li>Separar en 2 servicios</li><li>Definir contrato (HTTP)</li><li>Ejecutar ambos</li><li>Prueba end-to-end documentada</li></ul>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">Ruta sugerida</p>
+            <h3>Secuencia de resolución</h3>
+            <ul class="check-list"><li>Leer el foco de la semana: Separación en servicios independientes. Bounded Context.</li><li>Modelar o planificar a partir de: Separar en 2 servicios</li><li>Implementar y verificar: Definir contrato (HTTP)</li><li>Documentar o cerrar con: Ejecutar ambos</li></ul>
+          </article>
+        </div>
+
+        <div class="teaching-strip compact-strip">
+          <article class="teaching-box key">
+            <h3>Foco de laboratorio</h3>
+            <p>La práctica tiene valor cuando deja evidencia técnica: diseño, código ejecutable, pruebas, documentación o integración verificable.</p>
+          </article>
+          <article class="teaching-box ask">
+            <h3>Qué observar</h3>
+            <p>Buscá coherencia entre objetivo, implementación y evidencia. No alcanza con compilar: hay que justificar decisiones.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="entrega" class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <h2>Entrega y evidencia</h2>
+            <p>Qué debería quedar producido al cierre de la semana para que el trabajo sea visible, verificable y reutilizable.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <p class="eyebrow">Evidencias sugeridas</p>
+            <h3>Qué conviene dejar listo</h3>
+            <ul class="check-list"><li>Repositorio semanal actualizado con commits claros y una estructura ordenada.</li><li>Captura o demostración breve del flujo HTTP / API funcionando.</li><li>Código legible, organizado y coherente con el enfoque de la semana.</li><li>Evidencia mínima de ejecución, validación o reflexión técnica.</li></ul>
+          </article>
+
+          <article class="card">
+            <p class="eyebrow">Repositorio semanal</p>
+            <h3>Acceso rápido</h3>
+            <p>Usá la carpeta correspondiente para organizar archivos, capturas, código o materiales de apoyo de la semana.</p>
+            <div class="card-actions vertical-actions">
+              <a class="btn secondary small" href="https://drive.google.com/drive/folders/1HN2B3mFP8N6_UQuFpBUhKtHBWqL8vELT?usp=sharing" target="_blank" rel="noopener noreferrer">Ir al repo</a>
+              <a class="btn ghost small" href="../index.html#semanas">Ver todas las semanas</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="cierre" class="panel reveal">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <h2>Cierre y navegación</h2>
+            <p>Una síntesis breve para conectar esta semana con el hilo general de la materia y continuar el recorrido del campus.</p>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <article class="card quote-panel">
+            <p class="quote-big">La semana 12 fortalece el recorrido porque conecta <strong>Escalabilidad</strong> con una producción concreta y verificable.</p>
+          </article>
+          <article class="card">
+            <p class="eyebrow">Siguiente paso</p>
+            <h3>Continuidad del campus</h3>
+            <p>Usá esta página como hoja de ruta: qué estudiar, qué practicar, qué entregar y cómo se relaciona este tramo con el resto del cuatrimestre.</p>
+            <div class="week-navigation">
+              <a class="btn ghost" href="semana11.html">Semana 11</a>
+              <a class="btn primary" href="semana13.html">Semana 13</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <button id="scrollTopBtn" class="scroll-top" aria-label="Volver arriba">↑</button>
+  <script src="../script.js"></script>
+</body>
+</html>
