@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor de Material · Laboratorio de Software</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        .viewer-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .viewer-header {
+            height: 60px;
+            background: rgba(7, 17, 30, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .viewer-header .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .pdf-frame {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: calc(100vh - 60px);
+        }
+
+        .viewer-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+        }
+
+        .viewer-title strong {
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+    </style>
+</head>
+<body class="material-page">
+    <div class="viewer-container">
+        <header class="viewer-header">
+            <div class="viewer-title">
+                <span class="brand-mark" style="width: 32px; height: 32px; font-size: 0.7rem;">LS</span>
+                <strong>Ciclo de Vida del Software</strong>
+            </div>
+            <nav class="top-actions">
+                <a href="semana01.html" class="btn ghost small">← Volver a la Semana 01</a>
+            </nav>
+        </header>
+        
+        <iframe 
+            src="../assets/documentos/Ciclo-de-Vida-del-Desarrollo-de-Software.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+            class="pdf-frame"
+            title="Material de Clase">
+        </iframe>
+    </div>
+
+    <!-- Script para detectar tema y aplicar clase correspondiente -->
+    <script>
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+        }
+    </script>
+</body>
+</html>
